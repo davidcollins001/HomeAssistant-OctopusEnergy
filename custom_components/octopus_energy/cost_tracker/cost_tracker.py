@@ -183,7 +183,7 @@ class OctopusEnergyCostTrackerSensor(CoordinatorEntity, RestoreSensor):
         _LOGGER.debug(f"Tracked entity for '{self.entity_id}' updated from '{self._config[CONFIG_COST_TRACKER_TARGET_ENTITY_ID]}' to '{new_entity_id}'. Reloading...")
         await self._hass.config_entries.async_reload(self._config_entry.entry_id)
 
-  async def _async_calculate_cost(self, event: Event[EventStateChangedData]):
+  async def _async_calculate_cost(self, event):  # : Event[EventStateChangedData]):
     new_state = event.data["new_state"]
     old_state = event.data["old_state"]
     _LOGGER.debug(f"State updated for '{self._config[CONFIG_COST_TRACKER_TARGET_ENTITY_ID]}' for '{self.unique_id}': new_state: {new_state}; old_state: {old_state}")

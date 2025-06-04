@@ -159,7 +159,7 @@ class OctopusEnergyCostTrackerMonthSensor(RestoreSensor):
       _LOGGER.debug(f"Tracked entity for '{self.entity_id}' updated from '{self._tracked_entity_id}' to '{new_entity_id}'. Reloading...")
       await self._hass.config_entries.async_reload(self._config_entry.entry_id)
 
-  async def _async_calculate_cost(self, event: Event[EventStateChangedData]):
+  async def _async_calculate_cost(self, event):  # : Event[EventStateChangedData]):
     current = now()
     self._reset_if_new_month(current)
 
